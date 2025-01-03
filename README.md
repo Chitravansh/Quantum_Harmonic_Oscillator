@@ -31,6 +31,47 @@ This repository contains a quantum simulation of a quantum harmonic oscillator i
    
    pip install qiskit
    
+5. Ensure qiskit environment is activated :
+    
+    conda activate qiskit-env
+**
+Some important tip to run this simulator : **
+Steps to Install and Use qiskit-aer
+
+    Ensure Proper Environment
+    Verify you are using the right environment for Qiskit. If you installed Qiskit in a new environment (e.g., qiskit-env), activate it first:
+
+conda activate qiskit-env
+
+Install qiskit-aer Separately
+Install the Aer package explicitly:
+
+pip install qiskit-aer
+
+Verify Installation
+Test if qiskit-aer is correctly installed:
+
+from qiskit.providers.aer import AerSimulator
+print("AerSimulator is working!")
+
+Run Quantum Circuit with AerSimulator
+Here's a complete example using the AerSimulator:
+
+from qiskit import QuantumCircuit
+from qiskit.providers.aer import AerSimulator
+from qiskit import execute
+
+# Create a simple quantum circuit
+qc = QuantumCircuit(2)
+qc.h(0)
+qc.cx(0, 1)
+qc.measure_all()
+
+# Use AerSimulator
+simulator = AerSimulator()
+job = execute(qc, simulator, shots=1024)
+result = job.result()
+   
 
 ## Usage:
 To run the quantum harmonic oscillator simulation, execute the following Python script:
